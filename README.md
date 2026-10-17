@@ -1,123 +1,123 @@
 # ♟️ ChessClock
 
-Une pendule d'échecs pour Android, écrite en **Kotlin** avec **Jetpack Compose**.
-Posez le téléphone entre deux joueurs : chacun tape sa moitié d'écran pour terminer son coup et passer la main à l'adversaire.
+A chess clock for Android, written in **Kotlin** with **Jetpack Compose**.
+Place the phone between two players: each one taps their half of the screen to end their move and pass the turn to the opponent.
 
-<!-- Remplacez par vos captures d'écran (dossier screenshots/) -->
-<!-- ![Capture d'écran](screenshots/main.png) -->
+<!-- Replace with your own screenshots (screenshots/ folder) -->
+<!-- ![Screenshot](screenshots/main.png) -->
 
-## Sommaire
+## Table of contents
 
-- [Fonctionnalités](#fonctionnalités)
-- [Utilisation](#utilisation)
-- [Technologies](#technologies)
-- [Installation](#installation)
-- [Structure du projet](#structure-du-projet)
-- [Ce que ce projet m'a appris](#ce-que-ce-projet-ma-appris)
-- [Pistes d'amélioration](#pistes-damélioration)
-- [Licence](#licence)
+- [Features](#features)
+- [Usage](#usage)
+- [Built with](#built-with)
+- [Getting started](#getting-started)
+- [Project structure](#project-structure)
+- [What I learned](#what-i-learned)
+- [Roadmap](#roadmap)
+- [License](#license)
 
-## Fonctionnalités
+## Features
 
-- **Deux zones de jeu** : l'écran est coupé en deux, la zone du joueur du haut est retournée à 180° pour jouer face à face.
-- **Incrément de type Fischer** : un nombre de secondes est ajouté après chaque coup.
-- **Joueur actif mis en valeur** : la zone dont le tour est en cours change de couleur.
-- **Compteur de coups** pour chaque joueur.
-- **Ajustement du temps en direct** : boutons `-30s`, `-15s`, `+15s`, `+30s` sur chaque zone.
-- **Pause, reprise et remise à zéro** depuis la barre de contrôle.
-- **Fin de partie** : le joueur qui n'a plus de temps voit s'afficher « YOU LOSE » sur fond rouge.
-- **Réglages** : durée de départ (1, 3, 5 ou 10 minutes) et incrément (0, 2, 5 ou 10 secondes).
-- **Réglages sauvegardés** : ils sont conservés après la fermeture de l'application.
+- **Two player zones**: the screen is split in two, and the top player's zone is rotated 180° so players can sit face to face.
+- **Fischer increment**: a configurable number of seconds is added after each move.
+- **Active player highlight**: the zone whose turn it is changes color.
+- **Move counter** for each player.
+- **Live time adjustment**: `-30s`, `-15s`, `+15s` and `+30s` buttons on each zone.
+- **Pause, resume and reset** from the control bar.
+- **Game over screen**: the player who runs out of time sees "YOU LOSE" on a red background.
+- **Settings**: starting time (1, 3, 5 or 10 minutes) and increment (0, 2, 5 or 10 seconds).
+- **Saved settings**: your choices are kept after the app is closed.
 
-## Utilisation
+## Usage
 
-1. Ouvrez l'application : l'horloge est en pause.
-2. Choisissez la cadence dans les **réglages** (icône engrenage).
-3. Appuyez sur **▶ Play** pour lancer la partie : le temps du joueur 1 commence à s'écouler.
-4. À la fin de son coup, chaque joueur **tape sa propre zone** pour passer la main.
-5. Utilisez **⏸ Pause** pour arrêter l'horloge et **🔄 Replay** pour recommencer.
+1. Open the app: the clock starts paused.
+2. Choose the time control in **Settings** (gear icon).
+3. Press **▶ Play** to start the game: Player 1's time starts counting down.
+4. At the end of their move, each player **taps their own zone** to pass the turn.
+5. Use **⏸ Pause** to stop the clock and **🔄 Replay** to start over.
 
-| Bouton | Action |
+| Button | Action |
 |---|---|
-| ▶ | Démarrer / reprendre |
-| ⏸ | Mettre en pause |
-| 🔄 | Remettre les temps et les coups à zéro |
-| ⚙️ | Ouvrir les réglages |
+| ▶ | Start / resume |
+| ⏸ | Pause |
+| 🔄 | Reset times and move counters |
+| ⚙️ | Open settings |
 
-## Technologies
+## Built with
 
 - [Kotlin](https://kotlinlang.org/)
-- [Jetpack Compose](https://developer.android.com/jetpack/compose) et Material 3
-- Coroutines Kotlin (`LaunchedEffect`, `delay`) pour le décompte
-- `SharedPreferences` pour la sauvegarde des réglages
+- [Jetpack Compose](https://developer.android.com/jetpack/compose) and Material 3
+- Kotlin coroutines (`LaunchedEffect`, `delay`) for the countdown
+- `SharedPreferences` to persist settings
 - Gradle (Kotlin DSL)
 
-## Installation
+## Getting started
 
-### Prérequis
+### Prerequisites
 
-- [Android Studio](https://developer.android.com/studio) récent
-- Un appareil Android ou un émulateur (la version minimale d'Android est indiquée dans `app/build.gradle.kts`)
+- A recent version of [Android Studio](https://developer.android.com/studio)
+- An Android device or emulator (the minimum Android version is defined in `app/build.gradle.kts`)
 
-### Lancer le projet
+### Run the project
 
 ```bash
 git clone https://github.com/masta291/ChessClock.git
 cd ChessClock
 ```
 
-1. Ouvrez le dossier dans Android Studio.
-2. Attendez la fin de la synchronisation Gradle.
-3. Sélectionnez un appareil ou un émulateur, puis cliquez sur **Run ▶**.
+1. Open the folder in Android Studio.
+2. Wait for the Gradle sync to finish.
+3. Select a device or emulator, then click **Run ▶**.
 
-## Structure du projet
+## Project structure
 
 ```
 ChessClock/
 ├── app/
 │   └── src/main/
 │       ├── java/com/example/chessclock/
-│       │   ├── MainActivity.kt      # écran principal et composants
-│       │   └── ui/theme/            # couleurs, typographie, thème
-│       └── res/                     # icônes et ressources
+│       │   ├── MainActivity.kt      # main screen and UI components
+│       │   └── ui/theme/            # colors, typography, theme
+│       └── res/                     # icons and resources
 ├── gradle/
 └── build.gradle.kts
 ```
 
-Composants principaux de `MainActivity.kt` :
+Main components in `MainActivity.kt`:
 
-| Composant | Rôle |
+| Component | Role |
 |---|---|
-| `ChessClockScreen` | Gère l'état (temps, coups, joueur actif, pause) et le décompte |
-| `PlayerZone` | Affiche la zone d'un joueur (temps, coups, boutons de réglage rapide) |
-| `ControleButton` | Bouton d'icône de la barre de contrôle |
-| `TimeChip` | Petit bouton arrondi pour ajuster le temps |
-| `OptionButton` | Bouton de choix dans le dialogue des réglages |
-| `formatTime` | Convertit des secondes en `mm:ss` |
+| `ChessClockScreen` | Holds the state (times, moves, active player, pause) and runs the countdown |
+| `PlayerZone` | Displays one player's zone (time, moves, quick-adjust buttons) |
+| `ControleButton` | Icon button used in the control bar |
+| `TimeChip` | Small rounded button to adjust the time |
+| `OptionButton` | Selectable button used in the settings dialog |
+| `formatTime` | Converts seconds into `mm:ss` |
 
-## Ce que ce projet m'a appris
+## What I learned
 
-- Construire une interface avec `Row`, `Column` et `Box`
-- Gérer l'état avec `remember` et `mutableStateOf`
-- Remonter l'état (*state hoisting*) et passer des fonctions en paramètre
-- Lancer un décompte avec `LaunchedEffect` et les coroutines
-- Calculer des valeurs à partir de l'état plutôt que de les stocker
-- Sauvegarder des préférences avec `SharedPreferences`
+- Building a layout with `Row`, `Column` and `Box`
+- Managing state with `remember` and `mutableStateOf`
+- State hoisting and passing functions as parameters
+- Running a countdown with `LaunchedEffect` and coroutines
+- Deriving values from state instead of storing them
+- Saving preferences with `SharedPreferences`
 
-## Pistes d'amélioration
+## Roadmap
 
-- [ ] Bip sonore à chaque coup et à la fin du temps
-- [ ] Noms des joueurs modifiables
-- [ ] Garder l'écran allumé pendant une partie
-- [ ] Conserver l'état lors de la rotation de l'écran
-- [ ] Autres modes de cadence (Bronstein, délai simple, temps par coup)
-- [ ] Traduction de l'interface
+- [ ] Sound on each move and when time runs out
+- [ ] Editable player names
+- [ ] Keep the screen on during a game
+- [ ] Preserve state when the screen is rotated
+- [ ] More time controls (Bronstein, simple delay, per-move time)
+- [ ] Interface translations
 
-## Licence
+## License
 
-Ce projet est distribué sous licence MIT. Ajoutez un fichier `LICENSE` à la racine du dépôt
-(GitHub propose un modèle : **Add file > Create new file > nom `LICENSE`**).
+This project is released under the MIT License. Add a `LICENSE` file at the root of the repository
+(GitHub offers a template: **Add file > Create new file > name it `LICENSE`**).
 
-## Auteur
+## Author
 
-**masta291** : [github.com/masta291](https://github.com/masta291)
+**masta291**: [github.com/masta291](https://github.com/masta291)
