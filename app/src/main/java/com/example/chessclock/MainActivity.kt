@@ -1,4 +1,4 @@
-package com.example.chessclock
+package com.khaled.chessclock
 
 import android.content.Context
 import android.media.AudioManager
@@ -115,7 +115,7 @@ fun ChessClockScreen(modifier: Modifier = Modifier) {
                         fontWeight = FontWeight.ExtraBold ,
                         fontSize = 20.sp
                     )
-                    Row(horizontalArrangement = Arrangement.spacedBy(8.dp))
+                    Row(horizontalArrangement = Arrangement.spacedBy(1.dp))
                     {
                         listOf(1 , 3 , 5 , 10).forEach { minutes ->
                             OptionButton(
